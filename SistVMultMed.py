@@ -51,12 +51,12 @@ class Mascota:
     
 class sistemaV:
     def __init__(self):
-        self.__lista_mascotas = []
+        self.__lista_mascotasCaninos={}
+        self.__lista_mascotasFelinos={}
     
     def verificarExiste(self,historia):
-        for m in self.__lista_mascotas:
-            if historia == m.verHistoria():
-                return True
+        if historia in self.__lista_mascotasCaninos or historia in self.__lista_mascotasFelinos:
+            return True
         #solo luego de haber recorrido todo el ciclo se retorna False
         return False
         
@@ -116,6 +116,12 @@ def main():
 
                 for i in range(0,nm):
                     nombre_medicamentos = input("Ingrese el nombre del medicamento: ")
+                    for j in lista_med:
+                        if nombre_medicamentos == j.verNombre:
+                            print("Ya está asignado ese medicamento, por favor ingrese otro.")
+                            nombre_medicamentos = input("Ingrese el nombre del medicamento: ")
+                        else:
+                            continue
                     dosis =int(input("Ingrese la dosis: "))
                     medicamento = Medicamento()
                     medicamento.asignarNombre(nombre_medicamentos)
@@ -176,7 +182,7 @@ def main():
 if __name__=='__main__':
     main()
 
-hola
+
 
 
 
